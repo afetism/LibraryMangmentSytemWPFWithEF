@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryMangmentSytemWPF.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20240711180623_mig1")]
+    [Migration("20240712103749_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -234,7 +234,7 @@ namespace LibraryMangmentSytemWPF.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("SCards");
+                    b.ToTable("S_Cards");
                 });
 
             modelBuilder.Entity("LibraryMangmentSytemWPF.Models.Concrets.Student", b =>
@@ -403,7 +403,7 @@ namespace LibraryMangmentSytemWPF.Migrations
                     b.HasOne("LibraryMangmentSytemWPF.Models.Concrets.Student", "Student")
                         .WithMany("S_Cards")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Book");

@@ -242,7 +242,7 @@ namespace LibraryMangmentSytemWPF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SCards",
+                name: "S_Cards",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -255,23 +255,22 @@ namespace LibraryMangmentSytemWPF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SCards", x => x.Id);
+                    table.PrimaryKey("PK_S_Cards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SCards_Books_BookId",
+                        name: "FK_S_Cards_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SCards_Libs_LibId",
+                        name: "FK_S_Cards_Libs_LibId",
                         column: x => x.LibId,
                         principalTable: "Libs",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_SCards_Students_StudentId",
+                        name: "FK_S_Cards_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -300,18 +299,18 @@ namespace LibraryMangmentSytemWPF.Migrations
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SCards_BookId",
-                table: "SCards",
+                name: "IX_S_Cards_BookId",
+                table: "S_Cards",
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SCards_LibId",
-                table: "SCards",
+                name: "IX_S_Cards_LibId",
+                table: "S_Cards",
                 column: "LibId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SCards_StudentId",
-                table: "SCards",
+                name: "IX_S_Cards_StudentId",
+                table: "S_Cards",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
@@ -344,7 +343,7 @@ namespace LibraryMangmentSytemWPF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SCards");
+                name: "S_Cards");
 
             migrationBuilder.DropTable(
                 name: "T_Cards");

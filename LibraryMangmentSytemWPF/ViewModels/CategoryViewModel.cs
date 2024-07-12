@@ -75,7 +75,7 @@ namespace LibraryMangmentSytemWPF.ViewModels
 
         private bool CanSaveChanges(object arg)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         private void SaveChanges(object obj)

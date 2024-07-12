@@ -23,6 +23,7 @@ namespace LibraryMangmentSytemWPF.Views
         public CategoryPage()
         {
             InitializeComponent();
+           
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

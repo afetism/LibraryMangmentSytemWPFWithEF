@@ -26,7 +26,7 @@
                     <Frame Source="HomePage.xaml"/>
                 </TabItem>
                 <TabItem Header="Categories">
-                    <Frame Source="CategoryPage.xaml"></Frame>
+                    <Frame Source="CategoryPage.xaml"  Content="{Binding CurrentPage}" Loaded="Frame_Loaded"></Frame>
                 </TabItem>
                 <TabItem Header="Press">
                     <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>

@@ -231,7 +231,7 @@ namespace LibraryMangmentSytemWPF.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("SCards");
+                    b.ToTable("S_Cards");
                 });
 
             modelBuilder.Entity("LibraryMangmentSytemWPF.Models.Concrets.Student", b =>
@@ -400,7 +400,7 @@ namespace LibraryMangmentSytemWPF.Migrations
                     b.HasOne("LibraryMangmentSytemWPF.Models.Concrets.Student", "Student")
                         .WithMany("S_Cards")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Book");
