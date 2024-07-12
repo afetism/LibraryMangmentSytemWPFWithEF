@@ -12,7 +12,7 @@
     <Grid>
         <Grid Height="60" VerticalAlignment="Top" Background="#FF9C27B0">
             <TextBlock Text="Admin Panel" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Champagne &amp; Limousines" />
-            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
                 <materialDesign:PackIcon Kind="Power"/>
             </Button>
         </Grid>
@@ -26,7 +26,7 @@
                     <Frame Source="HomePage.xaml"/>
                 </TabItem>
                 <TabItem Header="Categories">
-                    
+                    <Frame Source="CategoryPage.xaml"></Frame>
                 </TabItem>
                 <TabItem Header="Press">
                     <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>

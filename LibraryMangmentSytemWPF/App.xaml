@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LibraryMangmentSytemWPF"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="/Views/MainAdminView.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -38,6 +40,7 @@
                     <!-- include a single secondary accent color (and the associated forecolour) -->
                     <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource Accent200}"/>
                     <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{StaticResource Accent200Foreground}"/>
+
                 </ResourceDictionary>
 
                 <!-- Include the Dragablz Material Design style -->
@@ -47,6 +50,22 @@
 
             <!-- tell Dragablz tab control to use the Material Design theme -->
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+
+            <Style x:Key="CRUDButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="Background" Value="DodgerBlue" />
+                <Setter Property="BorderBrush" Value="Gray" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="TextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Orange" />
+                <Setter Property="CaretBrush" Value="Black" />
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>
