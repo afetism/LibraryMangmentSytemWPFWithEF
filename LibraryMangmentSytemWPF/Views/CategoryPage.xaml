@@ -31,7 +31,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 0 0">
-                            <Button Style="{StaticResource CRUDButton}" Width="80" Background="ForestGreen" HorizontalAlignment="Center" Command="{Binding SaveChangesCommand}" CommandParameter="{Binding StudentData}" Content="Save" Margin="0 0 15 0" />
+                            <Button Style="{StaticResource CRUDButton}" Width="80" Background="ForestGreen" HorizontalAlignment="Center" Command="{Binding SaveChangesCommand}" CommandParameter="{Binding CategoryData}" Content="Save" Margin="0 0 15 0" />
                             <Button Style="{StaticResource CRUDButton}" Width="80" Background="OrangeRed" HorizontalAlignment="Center" Command="{Binding ClosePopupCommand}" Content="Cancel" />
                         </StackPanel>
                     </StackPanel>

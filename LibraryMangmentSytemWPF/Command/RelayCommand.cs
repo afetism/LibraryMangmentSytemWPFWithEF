@@ -22,7 +22,7 @@ namespace LibraryMangmentSytemWPF.Data;
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || _canExecute(parameter);
+        return true ;
         }
 
         public void Execute(object parameter)
