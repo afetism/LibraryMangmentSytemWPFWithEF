@@ -22,6 +22,7 @@ public abstract class BaseViewModel : INotifyPropertyChanged
     public abstract ICommand SaveChangesCommand { get; set; }
     public abstract ICommand ClosePopupCommand { get; set; }
     public abstract ICommand UpdateEntityCommand { get; set; }
+    public abstract ICommand DeleteEntityCommand { get; set; }
 
 }
 

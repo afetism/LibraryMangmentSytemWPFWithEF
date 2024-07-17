@@ -4,12 +4,14 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+
 using System.Windows.Input;
 
 namespace LibraryMangmentSytemWPF.ViewModels
@@ -28,7 +30,10 @@ namespace LibraryMangmentSytemWPF.ViewModels
             }
         }
 
-        private bool _isPopupOpen;
+		private ObservableCollection<Category> categories;
+		public ObservableCollection<Category> Categories { get => categories; set { categories=value; OnPropertyChanged(nameof(Categories)); } }
+
+		private bool _isPopupOpen;
         public bool IsPopupOpen
         {
             get { return _isPopupOpen; }
@@ -43,27 +48,60 @@ namespace LibraryMangmentSytemWPF.ViewModels
     
 
         private string name;
-        public string Name { get => name; set { name = value; OnPropertyChanged(nameof(Name)); } }
+
+		public string Name { get => name; set { name = value; OnPropertyChanged(nameof(Name)); } }
 
         public override ICommand SaveChangesCommand { get; set; }
         public override ICommand OpenPopupCommand { get; set ; }
         public override ICommand ClosePopupCommand { get; set ; }
         public override ICommand UpdateEntityCommand { get ; set; }
+		public override ICommand DeleteEntityCommand { get; set; }
 
-
-        public CategoryViewModel()
+		public CategoryViewModel()
         {
             OpenPopupCommand = new RelayCommand(OpenPopup);
             SaveChangesCommand = new RelayCommand(SaveChanges, CanSaveChanges);
             ClosePopupCommand = new RelayCommand(ClosePopup);
             UpdateEntityCommand = new RelayCommand(UpdateEntity);
-           
+            DeleteEntityCommand=new RelayCommand(DeleteEntity);
+			List<Category> listCategories = libraryDbContext.Categories.ToList();
 
-        }
+		
+			Categories = new ObservableCollection<Category>(listCategories);
 
-        private void UpdateEntity(object obj)
+		}
+
+		private void DeleteEntity(object obj)
+		{
+            try
+            {
+                var category = obj as Category;
+                if (category is not null)
+                {
+                    var result = MessageBox.Show($"Do you want to delete {category.Name}", "Delete Category", MessageBoxButton.YesNo);
+                    if (result==MessageBoxResult.Yes)
+                    {
+                        libraryDbContext.Remove(category);
+                        libraryDbContext.SaveChanges();
+                        Categories=new(libraryDbContext.Categories);
+
+                    }
+                }
+            }
+            catch(Exception ex) { 
+            
+            
+            MessageBox.Show("Error:"+ex.Message);
+            }
+		}
+
+		private void UpdateEntity(object obj)
         {
-            throw new NotImplementedException();
+            var category = obj as Category;
+            if (category != null)
+            {
+                OpenPopup(category);
+            }
         }
 
         private void ClosePopup(object obj)
@@ -88,15 +126,22 @@ namespace LibraryMangmentSytemWPF.ViewModels
                     if (category.Id == 0)
                     {
                         category = new Category() { Name = Name };
+						libraryDbContext.Categories.Add(category);
+					}
+                    else
+                    {
+                        category.Name = Name;
+                        libraryDbContext.Update(category);
                     }
-                    libraryDbContext.Categories.Add(category);
+                    
                     libraryDbContext.SaveChanges();
+                    Categories=new ObservableCollection<Category>(libraryDbContext.Categories);
                 }
 
             } 
-            catch (Exception ex) 
+            catch (Exception) 
             {
-                   MessageBox.Show("Exceptain :"+ex);
+                MessageBox.Show("ERROR","Error Message",MessageBoxButton.OK) ;
             }
             finally
             {
@@ -111,10 +156,13 @@ namespace LibraryMangmentSytemWPF.ViewModels
         {
             try
             {
-                if (obj is null || obj is not Category objAsAuthor)
+                if (obj is null || obj is not Category objAsCategory)
                     CategoryData = new();
                 else
-                    CategoryData = objAsAuthor;
+                {
+                    CategoryData = objAsCategory;
+                    Name = CategoryData.Name;
+                }
 
                 IsPopupOpen = true;
             }

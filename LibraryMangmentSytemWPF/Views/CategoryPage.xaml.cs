@@ -26,9 +26,6 @@ namespace LibraryMangmentSytemWPF.Views
            
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
     }
 }
