@@ -66,6 +66,12 @@
                 <Setter Property="CaretBrush" Value="Black" />
                 <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange" />
             </Style>
+            <Style x:Key="ComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignComboBox}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Orange" />
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

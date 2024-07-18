@@ -1,31 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using LibraryMangmentSytemWPF.ViewModels;
+using System.ComponentModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace LibraryMangmentSytemWPF.Views
+namespace LibraryMangmentSytemWPF.Views;
+
+public partial class CategoryPage : Page, INotifyPropertyChanged
 {
-    /// <summary>
-    /// Interaction logic for CategoryPage.xaml
-    /// </summary>
-    public partial class CategoryPage : Page
+    public CategoryPage()
     {
-        public CategoryPage()
-        {
-            InitializeComponent();
-           
-        }
+        InitializeComponent();
+        CurrentPage = this;
+        CurrentPage.DataContext=new CategoryViewModel();
+    }
 
-     
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private Page currentPage;
+
+    public Page CurrentPage
+    {
+        get => currentPage; set { currentPage = value; OnPropertyChanged(nameof(CurrentPage)); }
+
+
+
     }
 }

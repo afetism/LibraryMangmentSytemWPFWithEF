@@ -26,10 +26,13 @@
                     <Frame Source="HomePage.xaml"/>
                 </TabItem>
                 <TabItem Header="Categories">
-                    <Frame Source="CategoryPage.xaml"  Content="{Binding CurrentPage}" Loaded="Frame_Loaded"></Frame>
+                    <Frame Source="CategoryPage.xaml"></Frame>
                 </TabItem>
                 <TabItem Header="Press">
-                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame Source="PressPage.xaml"></Frame>
+                </TabItem>
+                <TabItem Header="Theme">
+                    <Frame Source="ThemePage.xaml"></Frame>
                 </TabItem>
                 <TabItem Header="Students">
                     <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -41,16 +44,16 @@
                     <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </TabItem>
                 <TabItem Header="Authors">
-                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame Source="AuthorPage.xaml"></Frame>
                 </TabItem>
                 <TabItem Header="Departments">
-                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame Source="DepartmentPage.xaml" ></Frame>
                 </TabItem>
                 <TabItem Header="Groups">
-                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame Source="GroupPage.xaml" ></Frame>
                 </TabItem>
                 <TabItem Header="Faculties">
-                    <TextBlock Text="Ask for any question!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame Source="FacultyPage.xaml"></Frame>
                 </TabItem>
                 
             </dragablz:TabablzControl>

@@ -6,7 +6,7 @@ namespace LibraryMangmentSytemWPF.Models.Concrets;
 
 	public class Department:BaseEntity
 	{
-    public required string Name { get; set; }
+	public string Name { get; set; } = null!;
     public List<Teacher> Teachers { get; set; }
 }
 

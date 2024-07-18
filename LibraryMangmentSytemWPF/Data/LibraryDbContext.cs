@@ -44,12 +44,7 @@ public class LibraryDbContext : DbContext
                    .HasForeignKey(e => e.BookId)
                    .IsRequired()
                    .OnDelete(DeleteBehavior.NoAction);
-        modelBuilder.Entity<Press>()
-                    .HasMany(e => e.Books)
-                    .WithOne(e => e.Press)
-                    .HasForeignKey(e => e.PressId)
-                    .IsRequired()
-                    .OnDelete(DeleteBehavior.Cascade);
+       
         modelBuilder.Entity<Department>()
                     .HasMany(e => e.Teachers)
                     .WithOne(e => e.Department)
@@ -112,6 +107,7 @@ public class LibraryDbContext : DbContext
 	public DbSet<S_Card> S_Cards { get; set; }
 	public DbSet<Student> Students { get; set; }
 	public DbSet<T_Card> T_Cards { get; set; }
+	
 	public DbSet<Teacher> Teachers { get; set; }	
 	public DbSet<Theme> Themes { get; set; }
 
